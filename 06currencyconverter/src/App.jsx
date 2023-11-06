@@ -5,21 +5,21 @@ import { InputBox } from './components/index.js';
 // import money from './assets/currency.jpg'
 
 function App() {
-  const [amount, setAmount] = useState(0);
-  const [from, setFrom] = useState('usd');
-  const [to, setTo] = useState('eur');
-  const [convertedAmount, setConvertedAmount] = useState(0);
+  const [amount, setAmount] = useState(0);  //populate amount to convert with 0 
+  const [from, setFrom] = useState('usd');  //populate from with default
+  const [to, setTo] = useState('eur');      //populate to with default
+  const [convertedAmount, setConvertedAmount] = useState(0);  //populate converted amount to 0
 
-  const currencyInfo = useCurrencyInfo(from);
-  const options = Object.keys(currencyInfo);
+  const currencyInfo = useCurrencyInfo(from); // API call using string 'from'
+  const options = Object.keys(currencyInfo);  // strip keys from data in currencyInfo
   
   const convert = () => {
     setConvertedAmount(amount * currencyInfo.to)
   }
 
-  const swap = () => {
-    setFrom(to);
-    setTo(from);
+  const swap = () => {    // batch operation to swap amounts
+    setFrom(to);          // values only change real time when using 
+    setTo(from);          // a callback
     setConvertedAmount(amount);
     setAmount(convertedAmount);
   }
