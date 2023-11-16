@@ -28,18 +28,18 @@ function InputBox({
             placeholder='Amount'
             disabled={amountDisabled}
             value={amount}
-            onChange={(e) => onAmountChange &&          // Ensure we're getting a number
-                onAmountChange(Number(e.target.value))} // since value is a string
+            onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}  // Ensure we're getting a number
+                                                                                        // since value is a string
             />                                                  
         </div>
         <div className='w-1/2 flex flex-wrap justify-end text-right'>
             <p className='text-black/40 mb-2 w-full'>Currency 
             Type</p>
-        <select className='rounded-lg px-1 py-1 bg-gray-100
+        <select 
+        className='rounded-lg px-1 py-1 bg-gray-100
         cursor-pointer outline-none'
         value={selectedCurrency}
-        onChange={(e) => {onCurrencyChange &&  
-            onCurrencyChange(e.target.value)}}
+        onChange={(e) => {onCurrencyChange && onCurrencyChange(e.target.value)}}
         disabled={currencyDisabled}
         >
             {currencyOptions.map((currency) => (
